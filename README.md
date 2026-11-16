@@ -44,7 +44,7 @@ The corrected version, [`examples/clean_email.html`](examples/clean_email.html),
 Requires Python 3.10 or later.
 
 ```bash
-git clone https://github.com/codestudio09/preflight-mcp.git
+git clone https://github.com/vibhu-sharma-09/preflight-mcp.git
 cd preflight-mcp
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
