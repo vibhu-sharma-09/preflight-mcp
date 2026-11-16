@@ -6,6 +6,8 @@
 
 The agent decides which checks to run, calls Preflight's tools, and explains what is wrong and how to fix it.
 
+**[Try it in your browser](https://vibhu-sharma-09.github.io/preflight-mcp/)**: the same checks as a single web page. Nothing is installed and nothing you paste is uploaded.
+
 ## Why this exists
 
 Pre-send QA on a busy email programme is slow and repetitive: broken links, missing UTM parameters, unrendered personalisation tags, missing alt text, a footer without an unsubscribe link. Mistakes cost revenue, data quality and compliance.
@@ -44,7 +46,7 @@ The corrected version, [`examples/clean_email.html`](examples/clean_email.html),
 Requires Python 3.10 or later.
 
 ```bash
-git clone https://github.com/<your-username>/preflight-mcp.git
+git clone https://github.com/vibhu-sharma-09/preflight-mcp.git
 cd preflight-mcp
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
@@ -86,12 +88,17 @@ On Windows the command is `C:\\full\\path\\to\\preflight-mcp\\.venv\\Scripts\\pr
 
 The connector follows Salesforce's documented REST endpoints and is covered by mocked tests; try it in a sandbox business unit first. Use it only with your organisation's approval.
 
+## Browser version
+
+[`docs/index.html`](docs/index.html) runs the same rules in JavaScript, entirely in the browser, for teams that can't install software or connect an AI agent. It is published with GitHub Pages and also works offline: download the file and open it. To rebuild it after changing the samples, run `python web/build.py`.
+
 ## How it is built
 
 - `src/preflight/checks.py`: the checks as plain Python functions, independent of MCP and easy to test
 - `src/preflight/sfmc.py`: Salesforce Marketing Cloud connector (OAuth client credentials, Content Builder asset API)
 - `src/preflight/server.py`: exposes the checks as MCP tools using the official MCP Python SDK
 - `tests/`: unit tests, including a mocked SFMC API
+- `web/template.html` and `web/build.py`: source for the browser version in `docs/`
 
 Compliance checks are heuristics that flag likely gaps; final sign-off stays with a person.
 
